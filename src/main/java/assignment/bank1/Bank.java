@@ -81,7 +81,9 @@ class Bank
                                         break;
                                 case 4:System.out.println("Balance is... "+b.balance());
                                        break;
+                                default:System.out.println("Enter valid input");
+                                        break;
                         }
-                }while(ch<=4);
+                }while(ch!=4);
         }
 }
