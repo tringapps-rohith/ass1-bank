@@ -52,7 +52,7 @@ class Bank
                         switch(ch)
                         {
                                 case 1:res=b.balance();
-					l.info("Username: "+name+"\nAccount no: "+accno+"\nAmount: "+res);
+					l.log(Level.INFO, () ->"Username: "+name+"\nAccount no: "+accno+"\nAmount: "+res);
                                        break;
                                 case 2:l.info("Enter the amount to be deposit\n");
                                        amount=sin.nextDouble();
@@ -65,7 +65,7 @@ class Bank
                                        {
                                                 b.deposit(amount);
 						res=b.balance();
-                                                l.info("Your total amount is... "+res);
+                                                l.log(Level.INFO, () ->"Your total amount is... "+res);
                                        }
                                         break;
                                 case 3:l.info("Enter the amount to be withdrawl\n");
@@ -74,7 +74,7 @@ class Bank
                                        if(amount<100)
                                        {
 
-                                               l.info("Minimum withdrawl is Rs.100. Withdrawl failed");
+                                               l.log("Minimum withdrawl is Rs.100. Withdrawl failed");
                                        }
                                        else if(res==0)
                                        {
@@ -83,11 +83,11 @@ class Bank
                                         else
                                        {
                                                 b.withDraw(amount);
-                                                l.info("Your current balance is... "+res);
+                                                l.log(Level.INFO, () ->"Your current balance is... "+res);
                                        }
                                         break;
                                 case 4:res=b.balance();
-					l.info("Balance is... "+res);
+					l.log(Level.INFO, () ->"Balance is... "+res);
                                        break;
                                 default:l.info("Enter valid input");
                                         break;
