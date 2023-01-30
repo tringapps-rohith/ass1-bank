@@ -1,5 +1,6 @@
 package assignment.bank1;
 import java.util.*;
+import java.util.logging.Logger;
 class Bank
 {
         private String name;
@@ -31,57 +32,59 @@ class Bank
         public static void main(String []args)
         {
                 Scanner sin=new Scanner(System.in);
-                System.out.print("Enter username\n");
+				Logger l=Logger.getLogger("com.api.jar");
+
+                l.info("Enter username\n");
                 String name=sin.next();
-                System.out.print("Enter account no\n");
+                l.info("Enter account no\n");
                 int accno=sin.nextInt();
-                System.out.print("Enter your amount that your account has\n");
+                l.info("Enter your amount that your account has\n");
                 double balance=sin.nextDouble();
                 double amount;
                 int ch=5;
                 Bank b=new Bank(name,accno,balance);
                 do
                 {
-                        System.out.print("\n1.User Details\n2.Deposit\n3.Withdrawl\n4.Check Balance\n5.Exit\n");
-                        System.out.print("Enter your choice\n");
+                        l.info("\n1.User Details\n2.Deposit\n3.Withdrawl\n4.Check Balance\n5.Exit\n");
+                        l.info("Enter your choice\n");
                         ch=sin.nextInt();
                         switch(ch)
                         {
-                                case 1:System.out.println("Username: "+name+"\nAccount no: "+accno+"\nAmount: "+b.balance());
+                                case 1:l.info("Username: "+name+"\nAccount no: "+accno+"\nAmount: "+b.balance());
                                        break;
-                                case 2:System.out.println("Enter the amount to be deposit\n");
+                                case 2:l.info("Enter the amount to be deposit\n");
                                        amount=sin.nextDouble();
                                        if(amount<100)
                                        {
 
-                                               System.out.println("Minimum deposit is Rs.100. So, your deposit failed");
+                                               l.info("Minimum deposit is Rs.100. So, your deposit failed");
                                        }
                                        else
                                        {
                                                 b.deposit(amount);
-                                                System.out.println("Your total amount is... "+b.balance());
+                                                l.info("Your total amount is... "+b.balance());
                                        }
                                         break;
-                                case 3:System.out.println("Enter the amount to be withdrawl\n");
+                                case 3:l.info("Enter the amount to be withdrawl\n");
                                        amount=sin.nextDouble();
                                        if(amount<100)
                                        {
 
-                                               System.out.println("Minimum withdrawl is Rs.100. Withdrawl failed");
+                                               l.info("Minimum withdrawl is Rs.100. Withdrawl failed");
                                        }
                                        else if(b.balance()==0)
                                        {
-                                               System.out.print("\nNo amount to withdrawl\n");
+                                               l.info("\nNo amount to withdrawl\n");
                                        }
                                         else
                                        {
                                                 b.withDraw(amount);
-                                                System.out.println("Your current balance is... "+b.balance());
+                                                l.info("Your current balance is... "+b.balance());
                                        }
                                         break;
-                                case 4:System.out.println("Balance is... "+b.balance());
+                                case 4:l.info("Balance is... "+b.balance());
                                        break;
-                                default:System.out.println("Enter valid input");
+                                default:l.info("Enter valid input");
                                         break;
                         }
                 }while(ch!=4);
