@@ -48,9 +48,11 @@ class Bank
                         l.info("\n1.User Details\n2.Deposit\n3.Withdrawl\n4.Check Balance\n5.Exit\n");
                         l.info("Enter your choice\n");
                         ch=sin.nextInt();
+						double res;
                         switch(ch)
                         {
-                                case 1:l.info("Username: "+name+"\nAccount no: "+accno+"\nAmount: "+b.balance());
+                                case 1:res=b.balance();
+					l.info("Username: "+name+"\nAccount no: "+accno+"\nAmount: "+res);
                                        break;
                                 case 2:l.info("Enter the amount to be deposit\n");
                                        amount=sin.nextDouble();
@@ -62,27 +64,30 @@ class Bank
                                        else
                                        {
                                                 b.deposit(amount);
-                                                l.info("Your total amount is... "+b.balance());
+						res=b.balance();
+                                                l.info("Your total amount is... "+res);
                                        }
                                         break;
                                 case 3:l.info("Enter the amount to be withdrawl\n");
                                        amount=sin.nextDouble();
+				       res=b.balance();
                                        if(amount<100)
                                        {
 
                                                l.info("Minimum withdrawl is Rs.100. Withdrawl failed");
                                        }
-                                       else if(b.balance()==0)
+                                       else if(res==0)
                                        {
                                                l.info("\nNo amount to withdrawl\n");
                                        }
                                         else
                                        {
                                                 b.withDraw(amount);
-                                                l.info("Your current balance is... "+b.balance());
+                                                l.info("Your current balance is... "+res);
                                        }
                                         break;
-                                case 4:l.info("Balance is... "+b.balance());
+                                case 4:res=b.balance();
+					l.info("Balance is... "+res);
                                        break;
                                 default:l.info("Enter valid input");
                                         break;
