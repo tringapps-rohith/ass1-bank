@@ -1,6 +1,7 @@
 package assignment.bank1;
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.logging.*;
 class Bank
 {
         private String name;
@@ -52,7 +53,7 @@ class Bank
                         switch(ch)
                         {
                                 case 1:res=b.balance();
-					l.log(Level.INFO, () ->"Username: "+name+"\nAccount no: "+accno+"\nAmount: "+res);
+					                   l.log(Level.INFO, () ->"Username: "+name+"\nAccount no: "+accno+"\nAmount: "+res);
                                        break;
                                 case 2:l.info("Enter the amount to be deposit\n");
                                        amount=sin.nextDouble();
@@ -70,28 +71,30 @@ class Bank
                                         break;
                                 case 3:l.info("Enter the amount to be withdrawl\n");
                                        amount=sin.nextDouble();
-				       res=b.balance();
+										
                                        if(amount<100)
                                        {
 
-                                               l.log("Minimum withdrawl is Rs.100. Withdrawl failed");
+                                               l.info("Minimum withdrawl is Rs.100. Withdrawl failed");
                                        }
-                                       else if(res==0)
+                                       else if(b.balance()==0)
                                        {
                                                l.info("\nNo amount to withdrawl\n");
                                        }
                                         else
                                        {
                                                 b.withDraw(amount);
-                                                l.log(Level.INFO, () ->"Your current balance is... "+res);
+                                                l.log(Level.INFO, () ->"Your current balance is... "+b.balance());
                                        }
                                         break;
                                 case 4:res=b.balance();
 					l.log(Level.INFO, () ->"Balance is... "+res);
                                        break;
+				case 5:l.info("Thank you");
+				       break;
                                 default:l.info("Enter valid input");
                                         break;
                         }
-                }while(ch!=4);
+                }while(ch!=5);
         }
 }
